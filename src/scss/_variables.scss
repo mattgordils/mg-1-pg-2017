@@ -1,0 +1,40 @@
+// Grid Structure
+$site-width : 85%;
+
+$max-site-width : 1300px;
+$columns : 12;
+$gutter : (100% - $site-width)/2; // this can be in % or px
+
+$margin : (100% - $site-width)/2;
+$container-margin : calc(#{$margin} * 1.15);
+
+// Breakpoints
+$sm : 450;
+$md : 600;
+$lg : 850;
+$xlg : 1050;
+$huge : 1500;
+
+// Colors
+$bg-color : #fff;
+$primary-color : #000;
+$text-color : #000;
+
+// Typography
+$main-font: 'Basis Grotesque', sans-serif;
+$base-line-height : 1.4em;
+
+// Breakpoints
+$sm : 450;
+$md : 600;
+$home-breakpoint: 700;
+$lg : 900;
+$xlg : 1200;
+$huge : 1500;
+
+// Transitions
+$fast-speed : .1s;
+$slow-speed : .5s;
+$med-speed : .25s;
+$ease  : ease-in-out;
+$fade-in-speed : .3s;

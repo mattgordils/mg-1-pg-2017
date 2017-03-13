@@ -1,0 +1,366 @@
+@import 'setup/reset';
+
+// Site Specific Variables
+@import 'variables';
+@import 'setup/mixins';
+
+// Helpers that do not create content
+// @import 'setup/mixins';
+
+// Setup Styles
+@import 'setup/grid';
+@import 'setup/fonts';
+
+// Site Specific Styles
+
+body, html {
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.4em;
+	font-family: $main-font;
+	color: #000;
+	font-weight: normal;
+	@include respond($xlg) {
+		font-size: 18px;
+		font-size: 1.125rem;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+* html .clearfix             { zoom: 1; }
+*:first-child+html .clearfix { zoom: 1; }
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: inline-block;
+	vertical-align: top;
+}
+
+a {
+	color: currentcolor;
+	cursor: pointer;
+	text-decoration: none;
+	padding-bottom: .2em;
+	border-bottom: 1px solid transparent;
+	transition: opacity .3s ease-in-out, border .3s ease-in-out, background .3s ease-in-out, color .3s ease-in-out;
+	&:hover {
+		border-bottom-color: currentcolor;
+	}
+}
+
+/* Header */
+header {
+	padding: 7.5% 0 3%;
+	h1,
+	h2 {
+		font-size: 1.777rem;
+		line-height: 1.4em;
+		max-width: 10em;
+	}
+	h2 {
+		opacity: .2;
+	}
+	a.info {
+		font-size: 1.777rem;
+		line-height: 1.4em;
+		opacity: .2;
+		display: inline-block;
+		padding-bottom: 0;
+		border-color: currentcolor;
+		position: absolute;
+		top: 0;
+		right: 0;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+/* Basic Site Styles */
+section {
+	overflow: hidden;
+	&.black {
+		background: #000;
+		color: #fff;
+	}
+	&.white {
+		background: #fff;
+		color: #000;
+	}
+	&.padded {
+		.container {
+			padding: 2.5rem 0;
+			@include respond($lg) {
+				padding: $margin 0;
+			}
+		}
+	}
+	&.padded-bottom {
+		.container {
+			padding: 0 0 2.5rem 0;
+			@include respond($lg) {
+				padding: 0 0 $margin 0;
+			}
+		}
+	}
+	&.padded-top {
+		.container {
+			padding: 2.5rem 0 0 0;
+			@include respond($lg) {
+				padding: $margin 0 0 0;
+			}
+		}
+	}
+}
+
+.container {
+	width: $site-width;
+	max-width: $max-site-width;
+	margin: 0 auto;
+	position: relative;
+}
+
+.project-info {
+	text-align: center;
+	.white & {
+		.project-services {
+			opacity: .2;
+		}
+	}
+	.project-title {
+		font-size: 1.777rem;
+		line-height: 1.4em;
+	}
+	.project-services {
+		font-size: 1rem;
+		line-height: 1.4em;
+		opacity: .5;
+	}
+	.project-link {
+		font-size: 1rem;
+		line-height: 1.4em;
+		position: relative;
+		display: inline-block;
+		padding-right: 20px;
+		&:before {
+			content: '';
+			display: block;
+			width: 12px;
+			height: 1px;
+			background: currentcolor;
+			position: absolute;
+			right: 0;
+			top: 55%;
+			margin-top: -1px;
+		}
+		&:after {
+			content: '';
+			display: block;
+			width: 6px;
+			height: 6px;
+			border-bottom: 1px solid currentcolor;
+			border-right: 1px solid currentcolor;
+			transform: rotate(-45deg);
+			display: inline-block;
+			vertical-align: middle;
+			position: absolute;
+			right: 0;
+	    top: 55%;
+	    margin-top: -4px;
+		}
+	}
+	+ .project-image {
+		margin-top: 2rem;
+	}
+}
+
+.project-image {
+	display: block;
+	text-align: center;
+	&.drop-shadow {
+		img {
+			box-shadow: 0 30px 60px rgba(0, 0, 0, .1);
+		}
+	}
+	+ .project-info {
+		margin-top: 2rem;
+	}
+}
+
+/* Honor */
+section.honor {
+	.project-info {
+		@include respond($lg) {
+			position: absolute;
+			top: 4rem;
+			right: 0;
+			width: 27%;
+		}
+	}
+	.project-image {
+		@include respond($lg) {
+			padding-right: 10%;
+			text-align: left;
+		}
+	}
+	.project-image img {
+		margin-right: -25%;
+		max-width: 125%;
+		@include respond($lg) {
+			max-width: 950px;
+			width: 90%;
+			margin: 0;
+			max-width: 100%;
+		}
+	}
+}
+
+/* Established */
+section.established {
+	.project-image {
+	}
+}
+
+/* Eames */
+section.eames {
+	background: #D7CFCD;
+	.project-image {
+	}
+}
+
+/* Southpaw */
+section.southpaw {
+	.project-image {
+	}
+}
+
+/* Ike Kligerman Barkley */
+section.ikb {
+	section.ikb .project-image {
+	}
+}
+
+/* Commune */
+section.commune {
+	.project-info {
+		position: absolute;
+		left: 0;
+		max-width: 50%;
+		width: 46%;
+		top: 50%;
+		margin-top: -2rem;
+	}
+	.project-image {
+		width: 62%;
+		float: right;
+	}
+	.project-image img {
+		margin-top: -10%;
+		margin-bottom: -10%;
+	}
+}
+
+/* Nachume Miller */
+section.nachume {
+	.project-image {
+	}
+}
+
+/* BHQFU */
+section.bhfu {
+	.project-image {
+	}
+}
+
+/* Reel Food */
+section.reel-food {
+	background: #d8d0cd;
+	.project-info {
+		color: #fff;
+		max-width: none;
+		padding: 7.5% 0;
+	}
+
+	.project-info .project-services {
+		opacity: .75;
+	}
+
+	.project-image {
+		max-width: 750px;
+		margin: 0 auto;
+	}
+
+	.project-image img {
+		margin-top: -6%;
+		margin-bottom: -22%;
+	}
+}
+
+/* Sailing Collective */
+section.sailing-collective {
+	.project-image {
+	}
+}
+
+/* Q Drinks */
+section.q-drinks {
+	.project-info {
+		position: absolute;
+		right: 0;
+		max-width: 50%;
+		width: 50%;
+		top: 50%;
+		margin-top: -2rem;
+	}
+	.project-image {
+		width: 60%;
+	}
+	.project-image img {
+		margin-top: -13%;
+		margin-bottom: -20%;
+	}
+}
+
+/* Info */
+section.info {
+	padding: 7.5% 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	> .container {
+		flex-grow: 1;
+	}
+}
+
+.bio p {
+	font-size: 1.777rem;
+	line-height: 1.4em;
+	max-width: 26.5em;
+}
+
+/* Footer */
+footer {
+	flex-grow: 0;
+	flex-shrink: 0;
+	.container {
+		margin-top: 3rem;
+		display: flex;
+		justify-content: space-between;
+		div a {
+			margin-right: 1.5em;
+			font-size: 1rem;
+		}
+	}
+}
