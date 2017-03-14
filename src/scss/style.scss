@@ -466,19 +466,28 @@ section.q-drinks {
 
 /* Info */
 section.info {
-	padding: 7.5% 0;
-	height: 100vh;
+	padding: $margin 0;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	@include respond($md) {
+		padding: $margin/2 0;
+	}
 	> .container {
 		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }
 
 .bio p {
-	font-size: 1.777rem;
+	font-size: 1.25rem;
 	line-height: 1.4em;
 	max-width: 26.5em;
+	@include respond($md) {
+		text-align: center;
+	}
 }
 
 /* Footer */
@@ -489,9 +498,15 @@ footer {
 		margin-top: 3rem;
 		display: flex;
 		justify-content: space-between;
+		@include respond($md) {
+			width: calc(#{$site-width} + #{$margin * .8});
+		}
 		div a {
 			margin-right: 1.5em;
 			font-size: 1rem;
+			&:last-of-type {
+				margin-right: 0;
+			}
 		}
 	}
 }
