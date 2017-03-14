@@ -67,7 +67,7 @@ header {
 	h1,
 	h2 {
 		font-size: 1.777rem;
-		line-height: 1.4em;
+		line-height: 1.25em;
 		max-width: 10em;
 	}
 	h2 {
@@ -75,7 +75,7 @@ header {
 	}
 	a.info {
 		font-size: 1.777rem;
-		line-height: 1.4em;
+		line-height: 1.25em;
 		opacity: .2;
 		display: inline-block;
 		padding-bottom: 0;
@@ -252,7 +252,44 @@ section.established {
 /* Eames */
 section.eames {
 	background: #D7CFCD;
+	position: relative;
+	> .container {
+		@include respond($md) {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+	}
 	.project-image {
+		width: 100%;
+		margin: 0;
+		@include respond($md) {
+			height: 80vh;
+			max-height: 1200px;
+			background-image: url(../images/eames-md.jpg);
+			background-position: center 50px;
+			background-repeat: no-repeat;
+			background-size: cover;
+			img {
+				display: none;
+			}
+		}
+		@include respond($lg) {
+			height: 100vh;
+			background-image: url(../images/eames-lg.jpg);
+		}
+	}
+	.project-info {
+		color: #fff;
+		padding: 3rem 0 1rem;
+		@include respond($md) {
+			position: absolute;
+			right: 0;
+			padding-top: 10%;
+			width: 33%;
+		}
 	}
 }
 
@@ -512,7 +549,7 @@ section.info {
 
 .bio p {
 	font-size: 1.25rem;
-	line-height: 1.4em;
+	line-height: $base-line-height;
 	max-width: 26.5em;
 	@include respond($md) {
 		text-align: center;
