@@ -26,6 +26,14 @@ body, html {
 	}
 }
 
+body {
+	opacity: 0;
+	transition: opacity 1s $ease;
+	&.loaded {
+		opacity: 1;
+	}
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -92,6 +100,15 @@ header {
 /* Basic Site Styles */
 section {
 	overflow: hidden;
+	> .transition-in {
+		opacity: 0;
+		transform: translate3d(0, 60px, 0);
+		transition: opacity .5s $ease, transform .5s $ease;
+		&.visible {
+			opacity: 1;
+			transform: translate3d(0, 0, 0);
+		}
+	}
 	&.black {
 		background: #000;
 		color: #fff;
@@ -108,11 +125,33 @@ section {
 			}
 		}
 	}
+	&.extra-padded {
+		.container {
+			padding: 2.5rem 0;
+			@include respond($md) {
+				padding: 5rem 0;
+			}
+			@include respond($lg) {
+				padding: ($margin * 2) 0;
+			}
+		}
+	}
 	&.padded-bottom {
 		.container {
 			padding: 0 0 2.5rem 0;
 			@include respond($lg) {
 				padding: 0 0 $margin 0;
+			}
+		}
+	}
+	&.extra-padded-bottom {
+		.container {
+			padding: 0 0 2.5rem 0;
+			@include respond($md) {
+				padding: 0 0 5rem 0;
+			}
+			@include respond($lg) {
+				padding: 0 0 ($margin * 2) 0;
 			}
 		}
 	}
@@ -226,6 +265,9 @@ section.honor {
 	}
 	.project-image {
 		margin-bottom: 0;
+		img {
+			margin-bottom: -2px;
+		}
 		@include respond($lg) {
 			padding-right: 10%;
 			text-align: left;
@@ -509,7 +551,7 @@ section.q-drinks-2 {
 		
 	}
 	.project-image {
-		max-width: 600px;
+		max-width: 900px;
 		margin: 0 auto;
 		img {
 			width: 250px;
@@ -523,8 +565,10 @@ section.q-drinks-2 {
 			}
 		}
 		video {
+			margin: 0 -2px;
 			border-radius: 2px;
 			max-width: 100%;
+			max-height: 60vh;
 			height: auto;
 		}
 	}
@@ -536,7 +580,7 @@ section.info {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	@include respond($md) {
+	@include respond($lg) {
 		padding: $margin/2 0;
 	}
 	> .container {
@@ -562,16 +606,22 @@ footer {
 	flex-shrink: 0;
 	.container {
 		margin-top: 3rem;
-		display: flex;
-		justify-content: space-between;
-		@include respond($md) {
+		text-align: center;
+		line-height: 1.75em;
+		@include respond($lg) {
 			width: calc(#{$site-width} + #{$margin * .8});
+			display: flex;
+			justify-content: space-between;
+			text-align: left;
+			line-height: 1em;
 		}
-		div a {
-			margin-right: 1.5em;
-			font-size: 1rem;
-			&:last-of-type {
-				margin-right: 0;
+		div {
+			a {
+				margin-right: 1.5em;
+				font-size: 1rem;
+				&:last-of-type {
+					margin-right: 0;
+				}
 			}
 		}
 	}
